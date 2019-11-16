@@ -35,7 +35,10 @@ deploy-to-oke:
         name: Prepare Kubernetes files
         code: |
           mkdir $WERCKER_OUTPUT_DIR/kubernetes
-          mv kubernetes_*.yml $WERCKER_OUTPUT_DIR/kubernetes
+          echo "$WERCKER_OUTPUT_DIR"
+          echo $WERCKER_ROOT
+          echo $WERCKER_SOURCE_DIR
+          mv $WERCKER_ROOT/kubernetes_*.yml $WERCKER_OUTPUT_DIR/kubernetes
 
     # `apply` is a good command to use here, as it'll create Kubernetes entities if they are missing.
     - kubectl:
